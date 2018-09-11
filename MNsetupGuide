@@ -1,0 +1,61 @@
+Getting started:
+
+Prepare 30001 coins
+You can buy it from (if you dont have the coins yet):
+https://www.southxchange.com/Market/Book/BTCF/BTC
+
+Windows side:
+Extract downloaded windows wallet
+Run BitcoinFinal-qt.exe
+Wait for initial init
+Click options -> wallet -> check "Enable coin control features" & "Show Masternodes tab"
+If your coin is still in exchange, transfer at least 8889 coins back to Windows wallet.
+Inside windows wallet, click file -> receiving addresses
+Click new
+Put a name as label for the new address
+Right click the address, select copy address, click close
+When there is 30001 coins inside windows wallet, click Send tab
+Paste copied address  in Pay To:
+Amount: 30000
+Click "Send" button below
+Windows wallet side is done for now
+
+Next, get Ubuntu 16.04 VPS.
+Install putty & open it.
+Input ip address of your vps & click open
+When prompted for username, input root
+When prompted for password, initial password is provided by VPS provider.
+Change password by typing command passwd
+Issue command "cd"
+Next would be to get the auto install script, copy entire command below:
+wget https://www.dropbox.com/s/i61kxmv3v08ta0u/autoscript.sh
+
+Go to putty & paste (right click mouse button)
+Type command below after gotten auto install script:
+chmod -R 755 autoscript.sh
+./autoscript.sh
+
+Wait for around 1 hour time for installation to complete.
+At the end of the script, it would generate masternode private key for you.
+Copy the key by highlighting the text (putty will auto copy when you highlight the text)
+(ändrad)
+Back to windows, open notepad
+Paste the private key earlier onto notepad
+Back to windows wallet
+Click tools -> debug console
+Issue command "masternode outputs"
+For output, there would be 1 long text (transaction id) & 1 single digit number at the end (output index)
+Copy the output to notepad
+Back to windows wallet
+Click masternode tab-> click create
+Fill in new line with template as below:
+Masternode-Alias
+VPS-IP-address:20500
+private-key-from-vps
+transaction-id
+output-index
+Save & close
+Close Windows wallet & open again
+Wait till complete sync, click masternodes, click the masternode that you want to activate, click Start alias
+Click Update
+After activating, you would see Masternode is Running.
